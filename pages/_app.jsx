@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }) {
                 Sebastian Pavel
               </h1>
               <p className="text-2xl text-neutral-300">
-                Full stack web developer based in{" "}
+                Self teached full stack web developer based in{" "}
                 <span className="text-orange-400">Iasi</span>, Romania.
               </p>
               <p className="mt-4">
