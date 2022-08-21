@@ -3,6 +3,7 @@ import functionStore from "../store/functionStore";
 import { BsCodeSlash } from "react-icons/bs";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { BiLinkExternal } from "react-icons/bi";
+import Head from "next/head";
 
 export default function Projects() {
   const { projects } = functionStore();
@@ -11,7 +12,6 @@ export default function Projects() {
 
   useEffect(() => {
     setProj(projects);
-    console.log(projects);
   }, [projects]);
 
   return (

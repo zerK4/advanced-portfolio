@@ -8,7 +8,7 @@ import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 
 function MyApp({ Component, pageProps }) {
   const [isActive, setIsActive] = useState("");
-  const { projects, fetchProjects, certs, fetchCerts } = functionStore();
+  const { fetchProjects, fetchCerts } = functionStore();
 
   useEffect(() => {
     fetchProjects();
@@ -42,11 +42,11 @@ function MyApp({ Component, pageProps }) {
                     <p
                       className={`${
                         isActive === "p"
-                          ? "w-[4rem] bg-orange-400"
+                          ? "w-[4rem] bg-orange-500"
                           : "w-[1rem] line"
                       } h-[2px] movement bg-neutral-800 `}
                     ></p>{" "}
-                    <p className="text-sm font-semibold">PROJECTS</p>
+                    <p className="text-[.8rem] font-semibold">PROJECTS</p>
                   </button>
                 </a>
                 <a href="#certs">
@@ -58,11 +58,11 @@ function MyApp({ Component, pageProps }) {
                     <p
                       className={`${
                         isActive === "ce"
-                          ? "w-[4rem] bg-orange-400"
+                          ? "w-[4rem] bg-orange-500"
                           : "w-[1rem] line"
                       } h-[2px] movement bg-neutral-800 `}
                     ></p>{" "}
-                    <p className="text-sm font-semibold">CERTIFICATION</p>
+                    <p className="text-[.8rem] font-semibold">CERTIFICATION</p>
                   </button>
                 </a>
                 <a href="#contact">
@@ -75,11 +75,11 @@ function MyApp({ Component, pageProps }) {
                     <p
                       className={`${
                         isActive === "c"
-                          ? "bg-orange-400 w-[4rem]"
+                          ? "bg-orange-500 w-[4rem]"
                           : "w-[1rem] line"
                       } h-[2px] movement bg-neutral-800 `}
                     ></p>{" "}
-                    <p className="text-sm font-semibold">CONTACT</p>
+                    <p className="text-[.8rem] font-semibold">CONTACT</p>
                   </button>
                 </a>
               </div>
