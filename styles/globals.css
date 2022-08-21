@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  .items {
+    box-shadow: 1px 14px 20px -8px rgba(0, 0, 0, 0.4);
+    position: relative;
+  }
+  .items::before {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    bottom: 0;
+  }
+  .items:hover::before {
+    width: 100%;
+  }
+  .dots:hover .dot {
+    color: red;
+    font-size: 2rem;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(38, 38, 38);
+    border-radius: 40px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: black;
+  }
+  .movement {
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  .loader {
+    width: 24px;
+    height: 24px;
+    border: 2px solid gray;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .link {
+    font-family: "Poppins", sans-serif;
+  }
+  .link:hover .line {
+    width: 4rem;
+    background: gray;
+  }
+  .active .line {
+    width: 4rem;
+    background: orange;
+  }
+}
