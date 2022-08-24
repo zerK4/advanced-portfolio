@@ -5,7 +5,7 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 import { BiLinkExternal } from "react-icons/bi";
 import Head from "next/head";
 
-export default function Projects() {
+export default function Projects(props) {
   const { projects } = functionStore();
   const [proj, setProj] = useState([]);
   const [isHover, setIsHover] = useState("");
@@ -14,46 +14,66 @@ export default function Projects() {
     setProj(projects);
   }, [projects]);
 
-  return (
-    <div className="w-full flex flex-col gap-2 md:px-4" id="projects">
-      <div className="text-2xl text-white font-semibold">Projects</div>
-      {proj.map((x) => (
+  if (projects?.length === 0) {
+    return (
+      <div className="w-full h-[4rem] flex items-center justify-center">
+        <div className="loader h-10 w-10 border-orange-400 border-b-transparent"></div>
+      </div>
+    );
+  } else {
+    return (
+      <div
+        ref={props.pro}
+        className="w-full flex flex-col gap-2 md:px-4 relative"
+        id="projects"
+      >
         <div
-          onMouseOver={() => setIsHover(x?._id)}
-          onMouseOut={() => setIsHover("")}
           className={`${
-            isHover !== "" && isHover !== x?._id
-              ? "bg opacity-50 scale-90"
-              : "bg-[#202022] bg-opacity-100 "
-          } p-2 ease-in-out duration-300 cursor-default select-none`}
-          key={x._id}
+            props.activeH === "pro"
+              ? "bg-neutral-900 w-full h-[3rem] px-2 flex items-center fixed top-0"
+              : "relative"
+          } text-2xl text-white z-20 font-semibold `}
         >
-          <div className="">
-            <h1 className="font-semibold">{x?.projectFramework}</h1>
-          </div>
-          <div className="h-[3rem] flex items-center gap-2 ">
-            <AiOutlineArrowRight className="text-orange-400" />
-            <h1 className="text-2xl">{x?.projectName}</h1>
-          </div>
-          <div className="flex items-center gap-2">
-            <p className="">{x?.projectDescription}</p>
-          </div>
-          <div className="w-full flex justify-between px-4">
-            <a href={x?.projectCode}>
-              <button className="flex items-center gap-2 py-2 opacity-50 hover:opacity-100 ease-in-out duration-300">
-                <BsCodeSlash />
-                Code
-              </button>
-            </a>
-            <a href={x?.projectLive}>
-              <button className="flex items-center gap-2 py-2 opacity-50 hover:opacity-100 ease-in-out duration-300">
-                <BiLinkExternal />
-                Live
-              </button>
-            </a>
-          </div>
+          Projects
         </div>
-      ))}
-    </div>
-  );
+        {proj.map((x) => (
+          <div
+            onMouseOver={() => setIsHover(x?._id)}
+            onMouseOut={() => setIsHover("")}
+            className={`${
+              isHover !== "" && isHover !== x?._id
+                ? "bg opacity-50 scale-90"
+                : "bg-[#202022] bg-opacity-100 "
+            } p-2 ease-in-out duration-300 cursor-default select-none`}
+            key={x._id}
+          >
+            <div className="">
+              <h1 className="font-semibold">{x?.projectFramework}</h1>
+            </div>
+            <div className="h-[3rem] flex items-center gap-2 ">
+              <AiOutlineArrowRight className="text-orange-400" />
+              <h1 className="text-2xl">{x?.projectName}</h1>
+            </div>
+            <div className="flex items-center gap-2">
+              <p className="">{x?.projectDescription}</p>
+            </div>
+            <div className="w-full flex justify-between px-4">
+              <a href={x?.projectCode}>
+                <button className="flex items-center gap-2 py-2 opacity-50 hover:opacity-100 ease-in-out duration-300">
+                  <BsCodeSlash />
+                  Code
+                </button>
+              </a>
+              <a href={x?.projectLive}>
+                <button className="flex items-center gap-2 py-2 opacity-50 hover:opacity-100 ease-in-out duration-300">
+                  <BiLinkExternal />
+                  Live
+                </button>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
 }

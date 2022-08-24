@@ -85,9 +85,8 @@ export default function Contact() {
               onChange={(e) => setName(e.target.value)}
               type="text"
               name="name"
-              className="relative h-[2.5rem] w-full px-2 bg-[#202022] outline-none border-x-2 border-[#202022] focus:border-orange-400 ease-in-out duration-300"
+              className="relative h-[2.5rem] w-full px-2 bg-[#202022] outline-none border-x-2 border-[#202022] focus:bg-neutral-700 ease-in-out duration-300"
               autoComplete="nope"
-              placeholder="Please enter your name"
             />
           </div>
           <div className="flex flex-col">
@@ -99,9 +98,8 @@ export default function Contact() {
               onChange={(e) => setEmail(e.target.value)}
               type="email"
               name="email"
-              className="relative h-[2.5rem] w-full px-2 bg-[#202022] outline-none border-x-2 border-[#202022] focus:border-orange-400 ease-in-out duration-300"
+              className="relative h-[2.5rem] w-full px-2 bg-[#202022] outline-none border-x-2 border-[#202022] focus:bg-neutral-700 ease-in-out duration-300"
               autoComplete="nope"
-              placeholder="Please enter your email address"
             />
           </div>
           <div className="flex flex-col">
@@ -113,9 +111,8 @@ export default function Contact() {
               onChange={(e) => setPhone(e.target.value)}
               type="text"
               name="phone"
-              className="relative h-[2.5rem] w-full px-2 bg-[#202022] outline-none border-x-2 border-[#202022] focus:border-orange-400 ease-in-out duration-300"
+              className="relative h-[2.5rem] w-full px-2 bg-[#202022] outline-none border-x-2 border-[#202022] focus:bg-neutral-700 ease-in-out duration-300"
               autoComplete="nope"
-              placeholder="Please enter your phone number"
             />
           </div>
           <div className="flex flex-col before:absolute before:w-[1rem] before:h-[2px] before:bg-orange-400 before:-left-2 before:-bottom-2 relative">
@@ -127,9 +124,8 @@ export default function Contact() {
               name="message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              className="relative resize-none h-[6rem] w-full px-2 bg-[#202022] outline-none border-x-2 border-[#202022] focus:border-orange-400 ease-in-out duration-300"
+              className="relative resize-none h-[6rem] w-full px-2 bg-[#202022] outline-none border-x-2 border-[#202022] focus:bg-neutral-700 ease-in-out duration-300"
               autoComplete="nope"
-              placeholder="Please enter your message"
             />
           </div>
           <div

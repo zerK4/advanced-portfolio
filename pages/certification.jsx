@@ -4,18 +4,23 @@ import { BiCertification } from "react-icons/bi";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { BiLinkExternal } from "react-icons/bi";
 
-export default function Certification() {
+export default function Certification(props) {
   const [certificat, setCertificat] = useState([]);
   const { certs } = functionStore();
   const [isHover, setIsHover] = useState("");
 
   useEffect(() => {
     setCertificat(certs);
+    console.log(certs);
   }, [certs]);
 
   return (
     <div className="py-4 md:px-4" id="certs">
-      <div className="text-2xl text-white  font-semibold my-2">
+      <div
+        className={`${
+          props.activeH === "ce" ? "bg-red-500" : null
+        } text-2xl text-white  font-semibold my-2`}
+      >
         Certification
       </div>
       <div className="flex flex-col gap-2">
@@ -30,8 +35,9 @@ export default function Certification() {
             } p-2 ease-in-out duration-300 cursor-default select-none`}
             key={x._id}
           >
-            <div className="">
+            <div className="flex items-center justify-between">
               <h1 className="font-semibold">{x?.provider}</h1>
+              <p className="text-[.8rem]">{x?.date}</p>
             </div>
             <div className="h-[3rem] flex items-center gap-2 ">
               <AiOutlineArrowRight className="text-orange-400" />
