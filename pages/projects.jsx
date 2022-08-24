@@ -3,7 +3,6 @@ import functionStore from "../store/functionStore";
 import { BsCodeSlash } from "react-icons/bs";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { BiLinkExternal } from "react-icons/bi";
-import Head from "next/head";
 
 export default function Projects(props) {
   const { projects } = functionStore();
@@ -27,15 +26,7 @@ export default function Projects(props) {
         className="w-full flex flex-col gap-2 md:px-4 relative"
         id="projects"
       >
-        <div
-          className={`${
-            props.activeH === "pro"
-              ? "bg-neutral-900 w-full h-[3rem] px-2 flex items-center fixed top-0"
-              : "relative"
-          } text-2xl text-white z-20 font-semibold `}
-        >
-          Projects
-        </div>
+        <div className={`text-2xl text-white z-20 font-semibold`}>Projects</div>
         {proj.map((x) => (
           <div
             onMouseOver={() => setIsHover(x?._id)}

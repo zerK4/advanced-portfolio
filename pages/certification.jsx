@@ -15,12 +15,8 @@ export default function Certification(props) {
   }, [certs]);
 
   return (
-    <div className="py-4 md:px-4" id="certs">
-      <div
-        className={`${
-          props.activeH === "ce" ? "bg-red-500" : null
-        } text-2xl text-white  font-semibold my-2`}
-      >
+    <div className="md:px-4 " id="certs" ref={props.cer}>
+      <div className={`text-2xl text-white  font-semibold my-2 `}>
         Certification
       </div>
       <div className="flex flex-col gap-2">

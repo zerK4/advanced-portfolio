@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { AiOutlineCheck } from "react-icons/ai";
 
-export default function Contact() {
+export default function Contact(props) {
   const form = useRef();
   const [sent, setSent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -56,7 +56,7 @@ export default function Contact() {
     setSent("");
   };
   return (
-    <div className="w-full" id="contact">
+    <div className="w-full" id="contact" ref={props.con}>
       <div
         className={`fixed top-0 ${
           sent === "sent" ? "top-0 text-neutral-400 text-2xl" : "-top-[100vw]"

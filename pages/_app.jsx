@@ -5,6 +5,7 @@ import functionStore from "../store/functionStore";
 import Logo from "../public/logo.webp";
 import Image from "next/image";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
+import { useInView } from "react-intersection-observer";
 
 function MyApp({ Component, pageProps }) {
   const [isActive, setIsActive] = useState("");
@@ -14,6 +15,16 @@ function MyApp({ Component, pageProps }) {
     fetchProjects();
     fetchCerts();
   }, []);
+
+  const { ref: pro, inView: activeH } = useInView();
+  const { ref: cer, inView: activeC } = useInView();
+  const { ref: con, inView: activeCo } = useInView();
+
+  useEffect(() => {
+    if (activeH === true || activeC === true || activeCo === true) {
+      setIsActive("");
+    }
+  }, [activeH, activeC, activeCo]);
 
   return (
     <div className="flex md:h-full flex-col md:flex-row bg-[#151515] min-h-screen text-neutral-400 scroll-smooth">
@@ -41,8 +52,10 @@ function MyApp({ Component, pageProps }) {
                     <span className="font-thin">01</span>
                     <p
                       className={`${
-                        isActive === "p"
-                          ? "w-[4rem] bg-orange-500"
+                        isActive === "p" ||
+                        (activeH === true &&
+                          (activeC !== true || activeCo !== true))
+                          ? "w-[4rem] bg-orange-400"
                           : "w-[1rem] line"
                       } h-[2px] movement bg-neutral-800 `}
                     ></p>{" "}
@@ -57,8 +70,8 @@ function MyApp({ Component, pageProps }) {
                     <span className="font-thin">02</span>
                     <p
                       className={`${
-                        isActive === "ce"
-                          ? "w-[4rem] bg-orange-500"
+                        isActive === "ce" || activeC === true
+                          ? "w-[4rem] bg-orange-400"
                           : "w-[1rem] line"
                       } h-[2px] movement bg-neutral-800 `}
                     ></p>{" "}
@@ -74,8 +87,8 @@ function MyApp({ Component, pageProps }) {
                     <span className="font-thin">03</span>
                     <p
                       className={`${
-                        isActive === "c"
-                          ? "bg-orange-500 w-[4rem]"
+                        isActive === "c" || activeCo === true
+                          ? "bg-orange-400 w-[4rem]"
                           : "w-[1rem] line"
                       } h-[2px] movement bg-neutral-800 `}
                     ></p>{" "}
@@ -112,7 +125,15 @@ function MyApp({ Component, pageProps }) {
           </div>
         </div>
         <div className="overflow-y-auto md:flex-1">
-          <Component {...pageProps} />
+          <Component
+            {...pageProps}
+            activeH={activeH}
+            pro={pro}
+            cer={cer}
+            activeC={activeC}
+            con={con}
+            activeCo={activeCo}
+          />
         </div>
       </div>
     </div>
