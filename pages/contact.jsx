@@ -28,7 +28,6 @@ export default function Contact(props) {
         )
         .then(
           (result) => {
-            console.log(result.text);
             setIsLoading(false);
             setSent("sent");
             setIsLoading(false);
@@ -37,7 +36,6 @@ export default function Contact(props) {
             }, 3000);
           },
           (error) => {
-            console.log(error.text);
             setIsLoading(false);
             setSent("error");
             setIsLoading(false);

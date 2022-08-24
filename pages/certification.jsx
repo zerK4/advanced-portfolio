@@ -11,7 +11,6 @@ export default function Certification(props) {
 
   useEffect(() => {
     setCertificat(certs);
-    console.log(certs);
   }, [certs]);
 
   return (
